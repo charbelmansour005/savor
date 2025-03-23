@@ -103,7 +103,7 @@ export default function Home() {
               />
             </div>
           </SwiperSlide>
-          {/* <div
+          <div
             style={{ zIndex: 2, opacity: 0.6 }}
             ref={prevRef}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
@@ -116,7 +116,7 @@ export default function Home() {
             className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
           >
             <ArrowRight size={15} />
-          </div> */}
+          </div>
           <motion.button
             style={{ zIndex: 2, maxWidth: 300 }}
             initial={{

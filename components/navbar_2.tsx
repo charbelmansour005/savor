@@ -64,7 +64,7 @@ export default function Navbar2() {
                   width={200}
                   height={100}
                   alt="Logo"
-                  className="select-none object-contain filter brightness-0"
+                  className="select-none object-contain"
                 />
               </motion.button>
             </div>
