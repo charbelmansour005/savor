@@ -39,7 +39,7 @@ export default function Navbar2() {
   return (
     <>
       <nav
-        className={`bg-[#fff4dc] text-black pt-6 sticky top-0 z-50 transition-transform duration-300 ${
+        className={`bg-[#ede3cc] text-black pt-6 sticky top-0 z-50 transition-transform duration-300 ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -60,7 +60,7 @@ export default function Navbar2() {
               >
                 <Image
                   style={{ objectFit: "contain", color: "black" }}
-                  src={image} // Replace with your image path
+                  src={image}
                   width={200}
                   height={100}
                   alt="Logo"
@@ -93,7 +93,6 @@ export default function Navbar2() {
               "Smoker Guide",
               "Who We Are",
               "Login / Sign Up",
-              // "Contact Us",
             ].map((item, index) => (
               <motion.a
                 initial={{ opacity: 0 }}
@@ -107,7 +106,7 @@ export default function Navbar2() {
                 className={`group select-none transition duration-300 relative ${anton.className} text-[15px] uppercase tracking-wide font-normal`}
               >
                 {item}
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[3px] bg-[#ffdc64]"></span>
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[3px] bg-[#9c734a]"></span>
               </motion.a>
             ))}
           </div>

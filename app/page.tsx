@@ -1,26 +1,20 @@
 "use client";
+import "swiper/css/effect-fade";
+import "swiper/css";
 import { Playfair_Display } from "next/font/google";
 import { Anton } from "next/font/google";
 import { Lato } from "next/font/google";
 import { Colors } from "@/config/helper";
-import Navbar2 from "@/components/navbar_2";
+import Navbar2 from "@/components/navbar/navbar_2";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, EffectFade, Autoplay } from "swiper/modules";
+import { Navigation, EffectFade, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import image1 from "../components/image1.jpeg";
-import image2 from "../components/image2.jpeg";
-import image3 from "../components/image3.webp";
-import image4 from "../components/image4.jpg";
-import "swiper/css/effect-fade";
-// Import Swiper styles
-import "swiper/css";
-import {
-  ArrowLeft,
-  ArrowLeftCircle,
-  ArrowRight,
-  ArrowRightCircle,
-} from "lucide-react";
+import image1 from "../components/navbar/image1.jpeg";
+import image2 from "../components/navbar/image2.jpeg";
+import image3 from "../components/navbar/image3.webp";
+import image4 from "../components/navbar/image4.jpg";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 const playfair = Playfair_Display({
@@ -106,14 +100,14 @@ export default function Home() {
           <div
             style={{ zIndex: 2, opacity: 0.6 }}
             ref={prevRef}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#ede3cc] rounded-full shadow-lg hover:bg-gray-200 transition"
           >
             <ArrowLeft size={15} />
           </div>
           <div
             style={{ zIndex: 2, opacity: 0.6 }}
             ref={nextRef}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#ede3cc] rounded-full shadow-lg hover:bg-gray-200 transition"
           >
             <ArrowRight size={15} />
           </div>
@@ -130,10 +124,10 @@ export default function Home() {
             }}
             viewport={{ once: true }}
             whileTap={{ scale: 0.98 }}
-            className="absolute left-50 bottom-15 group border-1 cursor-pointer py-2 px-2 bg-[#000] hover:bg-[#fff4dc] transition duration-300"
+            className="absolute left-50 bottom-15 group border-1 cursor-pointer py-2 px-2 bg-[#000] hover:bg-[#ede3cc] transition duration-300"
           >
             <p
-              className={`${lato.className} select-none text-sm uppercase tracking-[2] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+              className={`${lato.className} select-none text-sm uppercase tracking-[2] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
             >
               <span>Craft Exceptional Cocktails with Smoky Infusions</span>
             </p>
@@ -142,7 +136,7 @@ export default function Home() {
       </div>
 
       <div
-        style={{ backgroundColor: Colors.sand }}
+        style={{ backgroundColor: Colors.sandDark }}
         className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
       >
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -174,10 +168,10 @@ export default function Home() {
 
           <motion.button
             whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc] transition duration-300"
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc] transition duration-300"
           >
             <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
             >
               <span>Shop now</span>
             </p>
@@ -225,10 +219,10 @@ export default function Home() {
             }}
             viewport={{ once: true }}
             whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc]"
           >
             <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
             >
               <span>Shop now</span>
             </p>
@@ -245,10 +239,10 @@ export default function Home() {
             }}
             viewport={{ once: true }}
             whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc]"
           >
             <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
             >
               <span>Shop now</span>
             </p>
