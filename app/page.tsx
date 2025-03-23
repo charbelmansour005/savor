@@ -1,103 +1,300 @@
+"use client";
+import { Playfair_Display } from "next/font/google";
+import { Anton } from "next/font/google";
+import { Lato } from "next/font/google";
+import { Colors } from "@/config/helper";
+import Navbar2 from "@/components/navbar_2";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation, Pagination, EffectFade, Autoplay } from "swiper/modules";
 import Image from "next/image";
+import image1 from "../components/image1.jpeg";
+import image2 from "../components/image2.jpeg";
+import image3 from "../components/image3.webp";
+import image4 from "../components/image4.jpg";
+import "swiper/css/effect-fade";
+// Import Swiper styles
+import "swiper/css";
+import {
+  ArrowLeft,
+  ArrowLeftCircle,
+  ArrowRight,
+  ArrowRightCircle,
+} from "lucide-react";
+import { useRef, useState } from "react";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
+const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
+const text = "Framer Motion is a really cool tool".split(" ");
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const swiper = useSwiper();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const [_, setInit] = useState(false);
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  return (
+    <>
+      <Navbar2 />
+      <div className="relative">
+        <Swiper
+          autoplay={{ delay: 3500 }}
+          loop={true}
+          effect="fade"
+          modules={[Navigation, EffectFade, Autoplay]}
+          spaceBetween={10}
+          slidesPerView={1}
+          navigation={{
+            nextEl: nextRef.current,
+            prevEl: prevRef.current,
+          }}
+          pagination={{ clickable: true }}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          className="my-5"
+          onInit={(swiper: any) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+        >
+          <SwiperSlide>
+            <div className="flex justify-center items-center h-[750px]">
+              <Image
+                src={image1} // Replace with your image path
+                alt="Slide 1"
+                className="object-cover w-full h-full select-none"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex justify-center items-center h-[750px]">
+              <Image
+                src={image2} // Replace with your image path
+                alt="Slide 2"
+                className="object-cover w-full h-full select-none"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex justify-center items-center h-[750px]">
+              <Image
+                src={image3} // Replace with your image path
+                alt="Slide 3"
+                className="object-cover w-full h-full select-none"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex justify-center items-center h-[750px]">
+              <Image
+                src={image4} // Replace with your image path
+                alt="Slide 4"
+                className="object-cover w-full h-full select-none"
+              />
+            </div>
+          </SwiperSlide>
+          {/* <div
+            style={{ zIndex: 2, opacity: 0.6 }}
+            ref={prevRef}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <ArrowLeft size={15} />
+          </div>
+          <div
+            style={{ zIndex: 2, opacity: 0.6 }}
+            ref={nextRef}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
           >
-            Read our docs
+            <ArrowRight size={15} />
+          </div> */}
+          <motion.button
+            style={{ zIndex: 2, maxWidth: 300 }}
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{ once: true }}
+            whileTap={{ scale: 0.98 }}
+            className="absolute left-50 bottom-15 group border-1 cursor-pointer py-2 px-2 bg-[#000] hover:bg-[#fff4dc] transition duration-300"
+          >
+            <p
+              className={`${lato.className} select-none text-sm uppercase tracking-[2] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Craft Exceptional Cocktails with Smoky Infusions</span>
+            </p>
+          </motion.button>
+        </Swiper>
+      </div>
+
+      <div
+        style={{ backgroundColor: Colors.sand }}
+        className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
+      >
+        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+          <h1 className={`${playfair.className} font-bold`}>
+            This is Bold (700)
+          </h1>
+          <p className={`${playfair.className} font-normal`}>
+            This is Regular (400)
+          </p>
+          <p className={anton.className}>This paragraph uses anton.</p>
+          <h1 className={`${lato.className} tracking-[4]`}>
+            This is Lato with wide letter spacing
+          </h1>
+          <div style={{ flexDirection: "row" }}>
+            {text.map((el, i) => (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.25,
+                  delay: i / 10,
+                }}
+                key={i}
+              >
+                {el}{" "}
+              </motion.span>
+            ))}
+          </div>
+
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc] transition duration-300"
+          >
+            <p
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Shop now</span>
+            </p>
+          </motion.button>
+          <a href="#" className="group text-sky-600 transition duration-300">
+            Link
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+          <h1 className={`${playfair.className} font-bold`}>
+            This is Bold (700)
+          </h1>
+          <p className={`${playfair.className} font-normal`}>
+            This is Regular (400)
+          </p>
+          <p className={anton.className}>This paragraph uses anton.</p>
+          <h1 className={`${lato.className} tracking-[4]`}>
+            This is Lato with wide letter spacing
+          </h1>
+          <div style={{ flexDirection: "row" }}>
+            {text.map((el, i) => (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.25,
+                  delay: i / 10,
+                }}
+                key={i}
+              >
+                {el}{" "}
+              </motion.span>
+            ))}
+          </div>
+
+          <motion.button
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{ once: true }}
+            whileTap={{ scale: 0.98 }}
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+          >
+            <p
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Shop now</span>
+            </p>
+          </motion.button>
+          <motion.button
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{ once: true }}
+            whileTap={{ scale: 0.98 }}
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+          >
+            <p
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Shop now</span>
+            </p>
+          </motion.button>
+          <motion.button
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{ once: true }}
+            whileTap={{ scale: 0.98 }}
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+          >
+            <p
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Shop now</span>
+            </p>
+          </motion.button>
+          <motion.button
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{ once: true }}
+            whileTap={{ scale: 0.98 }}
+            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
+          >
+            <p
+              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            >
+              <span>Shop now</span>
+            </p>
+          </motion.button>
+        </main>
+      </div>
+    </>
   );
 }
