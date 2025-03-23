@@ -80,14 +80,14 @@ export const CustomSwiper = () => {
         <div
           style={{ zIndex: 2, opacity: 0.6 }}
           ref={prevRef}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#ede3cc] rounded-full shadow-lg hover:bg-gray-200 transition"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
         >
           <ArrowLeft size={15} />
         </div>
         <div
           style={{ zIndex: 2, opacity: 0.6 }}
           ref={nextRef}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#ede3cc] rounded-full shadow-lg hover:bg-gray-200 transition"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
         >
           <ArrowRight size={15} />
         </div>

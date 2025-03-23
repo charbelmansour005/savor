@@ -8,10 +8,13 @@ import {
   Menu,
   ShoppingBag,
   ShoppingCart,
+  UserIcon,
+  UserCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import image from "./savor.png";
+import { useScrollPosition } from "@/hooks/useScrollPosition";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -24,6 +27,7 @@ const playfair = Playfair_Display({
 });
 
 export default function Navbar2() {
+  const isAtTop = useScrollPosition();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -46,7 +50,9 @@ export default function Navbar2() {
   return (
     <>
       <nav
-        className={`bg-[#ede3cc] text-black pt-6 sticky top-0 z-50 transition-transform duration-300 ${
+        className={`bg-[#fff4dc] text-black pt-${
+          isAtTop ? 6 : 2
+        } sticky top-0 z-50 transition-transform duration-300 ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -65,6 +71,7 @@ export default function Navbar2() {
                 viewport={{ once: true }}
                 className={`${playfair.className} cursor-pointer tracking-[7] uppercase text-center`}
               >
+                {/* App Logo  */}
                 <Image
                   style={{ objectFit: "contain", color: "black" }}
                   src={image}
@@ -117,10 +124,21 @@ export default function Navbar2() {
                 }}
                 key={index}
                 href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                className={`group select-none transition duration-300 relative ${anton.className} text-[15px] uppercase tracking-wide font-normal`}
+                className={`group select-none transition duration-200 relative ${
+                  anton.className
+                } text-[15px] uppercase tracking-wide font-normal ${
+                  index === 5 && "flex flex-row"
+                }`}
               >
-                {item}
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[3px] bg-[#9c734a]"></span>
+                {item}{" "}
+                {index === 5 ? (
+                  <motion.div whileHover={{ scale: 0.9 }}>
+                    <UserCircle className="w-5 h-5 cursor-pointer ml-2" />
+                  </motion.div>
+                ) : (
+                  <></>
+                )}
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-[3px] bg-[#ffdc64]"></span>
               </motion.a>
             ))}
           </div>

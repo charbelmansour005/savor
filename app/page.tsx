@@ -1,185 +1,51 @@
 "use client";
-import "swiper/css/effect-fade";
-import "swiper/css";
-import { Playfair_Display } from "next/font/google";
-import { Anton } from "next/font/google";
-import { Lato } from "next/font/google";
-import { Colors } from "@/config/helper";
 import Navbar2 from "@/components/navbar/navbar_2";
-import { motion } from "framer-motion";
 import { CustomSwiper } from "@/components/swiper/Swiper";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import { SpacedText } from "@/components/text/spacedText";
+import { Options } from "@/components/ui/Options";
+import { Colors } from "@/config/helper";
+import { Anton } from "next/font/google";
+import { motion } from "framer-motion";
+import { Lato } from "next/font/google";
+const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
 const anton = Anton({
   subsets: ["latin"],
   weight: "400",
 });
-const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
-const text = "Framer Motion is a really cool tool".split(" ");
 
 export default function Home() {
   return (
     <>
       <Navbar2 />
       <CustomSwiper />
-
-      <div
+      <div className="absolute left-1/2 transform -translate-x-1/2 md:relative md:pl-50">
+        <SpacedText text="Our Collection" />
+        <p
+          className={`${anton.className} select-none uppercase text-2xl mt-5 text-center md:text-left`}
+        >
+          SAVOR COCKTAIL SMOKER
+        </p>
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          className="group mt-5 border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc] transition duration-300"
+        >
+          <p
+            className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+          >
+            <span>Shop now</span>
+          </p>
+        </motion.button>
+      </div>
+      <div className="pb-200"></div>
+      {/* <div
         style={{ backgroundColor: Colors.sandDark }}
         className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
       >
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-          <h1 className={`${playfair.className} font-bold`}>
-            This is Bold (700)
-          </h1>
-          <p className={`${playfair.className} font-normal`}>
-            This is Regular (400)
-          </p>
-          <p className={anton.className}>This paragraph uses anton.</p>
-          <h1 className={`${lato.className} tracking-[4]`}>
-            This is Lato with wide letter spacing
-          </h1>
-          <div style={{ flexDirection: "row" }}>
-            {text.map((el, i) => (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.25,
-                  delay: i / 10,
-                }}
-                key={i}
-              >
-                {el}{" "}
-              </motion.span>
-            ))}
-          </div>
-
-          <motion.button
-            whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc] transition duration-300"
-          >
-            <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
-            >
-              <span>Shop now</span>
-            </p>
-          </motion.button>
-          <a href="#" className="group text-sky-600 transition duration-300">
-            Link
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-          </a>
-
-          <h1 className={`${playfair.className} font-bold`}>
-            This is Bold (700)
-          </h1>
-          <p className={`${playfair.className} font-normal`}>
-            This is Regular (400)
-          </p>
-          <p className={anton.className}>This paragraph uses anton.</p>
-          <h1 className={`${lato.className} tracking-[4]`}>
-            This is Lato with wide letter spacing
-          </h1>
-          <div style={{ flexDirection: "row" }}>
-            {text.map((el, i) => (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.25,
-                  delay: i / 10,
-                }}
-                key={i}
-              >
-                {el}{" "}
-              </motion.span>
-            ))}
-          </div>
-
-          <motion.button
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-              transition: {
-                duration: 1,
-              },
-            }}
-            viewport={{ once: true }}
-            whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc]"
-          >
-            <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
-            >
-              <span>Shop now</span>
-            </p>
-          </motion.button>
-          <motion.button
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-              transition: {
-                duration: 1,
-              },
-            }}
-            viewport={{ once: true }}
-            whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#ede3cc]"
-          >
-            <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
-            >
-              <span>Shop now</span>
-            </p>
-          </motion.button>
-          <motion.button
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-              transition: {
-                duration: 1,
-              },
-            }}
-            viewport={{ once: true }}
-            whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
-          >
-            <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
-            >
-              <span>Shop now</span>
-            </p>
-          </motion.button>
-          <motion.button
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-              transition: {
-                duration: 1,
-              },
-            }}
-            viewport={{ once: true }}
-            whileTap={{ scale: 0.98 }}
-            className="group border-1 cursor-pointer py-4 px-20 bg-[#000] hover:bg-[#fff4dc]"
-          >
-            <p
-              className={`${lato.className} text-sm uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
-            >
-              <span>Shop now</span>
-            </p>
-          </motion.button>
+          <SpacedText text="hi" />
+          <Options />
         </main>
-      </div>
+      </div> */}
     </>
   );
 }
