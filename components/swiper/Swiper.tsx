@@ -10,13 +10,10 @@ import image2 from "../navbar/image2.jpeg";
 import image3 from "../navbar/image3.webp";
 import image4 from "../navbar/image4.jpg";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Lato } from "next/font/google";
-const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
+import { SpacedButton } from "../buttons/spacedButton";
 
 export const CustomSwiper = () => {
   const [_, _setInit] = useState(false);
-
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -47,7 +44,7 @@ export const CustomSwiper = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center h-[750px]">
             <Image
-              src={image1} // Replace with your image path
+              src={image1}
               alt="Slide 1"
               className="object-cover w-full h-full select-none"
             />
@@ -56,7 +53,7 @@ export const CustomSwiper = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center h-[750px]">
             <Image
-              src={image2} // Replace with your image path
+              src={image2}
               alt="Slide 2"
               className="object-cover w-full h-full select-none"
             />
@@ -65,7 +62,7 @@ export const CustomSwiper = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center h-[750px]">
             <Image
-              src={image3} // Replace with your image path
+              src={image3}
               alt="Slide 3"
               className="object-cover w-full h-full select-none"
             />
@@ -74,7 +71,7 @@ export const CustomSwiper = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center h-[750px]">
             <Image
-              src={image4} // Replace with your image path
+              src={image4}
               alt="Slide 4"
               className="object-cover w-full h-full select-none"
             />
@@ -94,27 +91,10 @@ export const CustomSwiper = () => {
         >
           <ArrowRight size={15} />
         </div>
-        <motion.button
-          style={{ zIndex: 2, maxWidth: 300 }}
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-            transition: {
-              duration: 1,
-            },
-          }}
-          viewport={{ once: true }}
-          whileTap={{ scale: 0.98 }}
-          className="absolute left-1/2 bottom-1/2 transform -translate-x-1/2 -translate-y-1/2 md:bottom-15 md:left-85 group border cursor-pointer py-2 px-2 bg-[#000] hover:bg-[#ede3cc] transition duration-300"
-        >
-          <p
-            className={`${lato.className} select-none text-sm uppercase tracking-[2] font-normal text-[#ede3cc] group-hover:text-[#000000]`}
-          >
-            <span>Craft Exceptional Cocktails with Smoky Infusions</span>
-          </p>
-        </motion.button>
+
+        <SpacedButton
+          text={"Craft Exceptional Cocktails with Smoky Infusions"}
+        />
       </Swiper>
     </div>
   );

@@ -1,7 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Anton, Playfair_Display } from "next/font/google";
-import { Search, MapPin, User, Menu } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  User,
+  Menu,
+  ShoppingBag,
+  ShoppingCart,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import image from "./savor.png";
@@ -71,8 +78,15 @@ export default function Navbar2() {
 
             {/* Right Section */}
             <div className="hidden md:flex items-center space-x-4">
-              <Search className="w-5 h-5 cursor-pointer" />
-              <User className="w-5 h-5 cursor-pointer" />
+              <motion.div whileHover={{ scale: 0.9 }}>
+                <Search className="w-5 h-5 cursor-pointer" />
+              </motion.div>
+              {/* <motion.div whileHover={{ scale: 0.9 }}>
+                <User className="w-5 h-5 cursor-pointer" />
+              </motion.div> */}
+              <motion.div whileHover={{ scale: 0.9 }}>
+                <ShoppingCart className="w-5 h-5 cursor-pointer" />
+              </motion.div>
             </div>
 
             {/* Mobile Menu Icon */}
