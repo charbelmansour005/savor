@@ -9,7 +9,7 @@ import image1 from "../navbar/image1.jpeg";
 import image2 from "../navbar/image2.jpeg";
 import image3 from "../navbar/image3.webp";
 import image4 from "../navbar/image4.jpg";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SpacedButton } from "../buttons/spacedButton";
 
 export const CustomSwiper = () => {
@@ -78,18 +78,18 @@ export const CustomSwiper = () => {
           </div>
         </SwiperSlide>
         <div
-          style={{ zIndex: 2, opacity: 0.6 }}
+          style={{ zIndex: 2 }}
           ref={prevRef}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
+          className="absolute p-3 left-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#000] shadow-lg"
         >
-          <ArrowLeft size={15} />
+          <ChevronLeft color="white" size={30} />
         </div>
         <div
-          style={{ zIndex: 2, opacity: 0.6 }}
+          style={{ zIndex: 2 }}
           ref={nextRef}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#fff4dc] rounded-full shadow-lg hover:bg-gray-200 transition"
+          className="absolute p-3 right-4 top-1/2 transform -translate-y-1/2 cursor-pointer p-1 bg-[#000] shadow-lg"
         >
-          <ArrowRight size={15} />
+          <ChevronRight color="white" size={30} />
         </div>
 
         <SpacedButton
