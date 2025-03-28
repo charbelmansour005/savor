@@ -1,20 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Anton, Playfair_Display } from "next/font/google";
-import {
-  Search,
-  MapPin,
-  User,
-  Menu,
-  ShoppingBag,
-  ShoppingCart,
-  UserIcon,
-  UserCircle,
-} from "lucide-react";
+import { Search, Menu, ShoppingCart, UserCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import image from "./savor.png";
-import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { usePathname } from "next/navigation";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -27,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export default function Navbar2() {
-  const isAtTop = useScrollPosition();
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -47,21 +38,29 @@ export default function Navbar2() {
     };
   }, [lastScrollY]);
 
+  const navLinks = [
+    { name: "Home", url: "/" },
+    { name: "Shop", url: "/shop" },
+    { name: "Cocktails", url: "/cocktails" },
+    { name: "Smoker Guide", url: "/guide" },
+    { name: "Who We Are", url: "/about" },
+    { name: "Login / Sign Up", url: "/register" },
+  ];
+
   return (
     <>
       <nav
-        className={`bg-[#fff4dc] text-black pt-${
-          isAtTop ? 6 : 2
-        } sticky top-0 z-50 transition-transform duration-300 ${
+        className={`bg-[#faeac8] text-black pt-6 sticky top-0 z-50 transition-transform duration-300 ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="max-w-7xl mx-auto pl-0 pr-8 md:px-8">
           {/* Navbar Content */}
           <div className="flex items-center justify-between h-16">
             {/* Centered Logo Section */}
-            <div className="flex-1 flex justify-center">
-              <motion.button
+            <div className="flex-1 flex justify-start md:justify-center">
+              <motion.a
+                href="/"
                 initial={{ opacity: 0 }}
                 whileTap={{ scale: 0.98 }}
                 whileInView={{
@@ -75,12 +74,12 @@ export default function Navbar2() {
                 <Image
                   style={{ objectFit: "contain", color: "black" }}
                   src={image}
-                  width={200}
+                  width={160}
                   height={100}
                   alt="Logo"
                   className="select-none object-contain"
                 />
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Right Section */}
@@ -107,40 +106,53 @@ export default function Navbar2() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex justify-center space-x-6 mt-4 flex-wrap">
-            {[
-              "Home",
-              "Shop",
-              "Cocktails",
-              "Smoker Guide",
-              "Who We Are",
-              "Login / Sign Up",
-            ].map((item, index) => (
-              <motion.a
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.25,
-                  delay: index / 30,
-                }}
-                key={index}
-                href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                className={`group select-none transition duration-200 relative ${
-                  anton.className
-                } text-[15px] uppercase tracking-wide font-normal ${
-                  index === 5 && "flex flex-row"
-                }`}
-              >
-                {item}{" "}
-                {index === 5 ? (
-                  <motion.div whileHover={{ scale: 0.9 }}>
-                    <UserCircle className="w-5 h-5 cursor-pointer ml-2" />
-                  </motion.div>
-                ) : (
-                  <></>
-                )}
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-[3px] bg-[#ffdc64]"></span>
-              </motion.a>
-            ))}
+            {navLinks.map((item, index) => {
+              const isActive = pathname === item.url;
+              return (
+                <motion.a
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.25,
+                    delay: index / 30,
+                  }}
+                  key={index}
+                  href={item.url}
+                  className={`group select-none transition duration-200 relative ${
+                    anton.className
+                  } text-[15px] uppercase tracking-wide font-normal ${
+                    index === 5 && "flex flex-row"
+                  }`}
+                >
+                  {item.name}{" "}
+                  {index === 5 ? (
+                    <motion.div
+                      transition={{
+                        duration: 0.25,
+                        delay: index / 30,
+                        type: "spring",
+                        stiffness: 50, // Controls the bounciness (higher = less bounce)
+                        damping: 10, // Controls how fast the animation settles
+                        mass: 0.75,
+                      }}
+                      initial={{ scale: 0.5 }}
+                      animate={{ scale: 1 }}
+                    >
+                      <UserCircle className="w-5 h-5 cursor-pointer ml-2" />
+                    </motion.div>
+                  ) : (
+                    <></>
+                  )}
+                  <span
+                    className={`block h-[3px] ${
+                      isActive ? `bg-[#000000]` : `bg-[#ffdc64]`
+                    } transition-all duration-200 ${
+                      isActive ? "max-w-full" : "max-w-0 group-hover:max-w-full"
+                    }`}
+                  ></span>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </nav>
@@ -151,24 +163,16 @@ export default function Navbar2() {
           className="fixed inset-0 bg-black bg-opacity-80 z-40 flex justify-center items-center mt-20"
           onClick={() => setIsDrawerOpen(false)}
         >
-          <div className="bg-white w-full h-full p-6 flex flex-col items-start">
-            <h2 className={`${anton.className} text-xl mb-4`}>Menu</h2>
+          <div className="bg-[#faeac8] w-full h-full p-6 flex flex-col items-start">
             <div className="flex flex-col space-y-4">
-              {[
-                "Home",
-                "Shop",
-                "Cocktails",
-                "Smoker Guide",
-                "Login / Sign Up",
-                "About Us",
-              ].map((item, index) => (
+              {navLinks.map((item, index) => (
                 <a
                   key={index}
-                  href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                  className={`${anton.className} text-md uppercase`}
+                  href={item.url}
+                  className={`${anton.className} text-4xl uppercase`}
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
             </div>

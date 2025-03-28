@@ -47,10 +47,10 @@ export const ProductsSliderItem = ({
         </div>
         <motion.button
           whileTap={{ scale: 0.9 }}
-          className="hidden md:flex flex-row justify-center group mt-5 border-1 cursor-pointer py-4 px-27 bg-[#000] hover:bg-[#fff4dc] transition duration-150 w-[380px]"
+          className="hidden md:flex flex-row justify-center group mt-5 border-1 cursor-pointer py-4 px-27 bg-[#000] hover:bg-[#faeac8] transition duration-150 w-[380px]"
         >
           <p
-            className={`${lato.className} text-sm text-center uppercase tracking-[5] font-normal text-[#fff4dc] group-hover:text-[#000000]`}
+            className={`${lato.className} text-sm text-center uppercase tracking-[5] font-normal text-[#faeac8] group-hover:text-[#000000]`}
           >
             Shop now
           </p>
