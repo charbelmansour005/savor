@@ -4,7 +4,7 @@ import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { useRef, useState } from "react";
-import { ProductsSliderItem } from "../product/ProductsSliderItem";
+import { ProductItem } from "../product/ProductItem";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import kit from "../kit-slider/kit.png";
 import woodchips from "../kit-slider/wood-chips.png";
@@ -23,9 +23,15 @@ export const KitSlider = () => {
             slidesPerView: 1, // Show 1 slide on mobile
           },
           768: {
-            slidesPerView: 2, // Show 2 slides on tablet
+            slidesPerView: 1, // Show 2 slides on tablet
+          },
+          820: {
+            slidesPerView: 1, // Show 2 slides on tablet
           },
           1024: {
+            slidesPerView: 2, // Show 3 slides on desktop
+          },
+          1460: {
             slidesPerView: 3, // Show 3 slides on desktop
           },
         }}
@@ -50,7 +56,7 @@ export const KitSlider = () => {
         }}
       >
         <SwiperSlide>
-          <ProductsSliderItem
+          <ProductItem
             title="COCKTAIL SMOKER FULL KIT"
             description=" Upgrade your at-home bar with our Cocktail Smoking Kit, a must-have
           for connoisseurs and enthusiasts alike."
@@ -58,14 +64,14 @@ export const KitSlider = () => {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductsSliderItem
+          <ProductItem
             title="PREMIUM SMOKED APPLE WOOD CHIPS"
             description="Nature Wood: The flavor of wood chips is not from chemicals, pre soaked artificial flavor extracts or preservatives. Just put it on the stove, add wood chips and enjoy the smoky flavor."
             image={woodchips2}
           />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductsSliderItem
+          <ProductItem
             title="COCKTAIL SMOKER FULL KIT"
             description=" Upgrade your at-home bar with our Cocktail Smoking Kit, a must-have
           for connoisseurs and enthusiasts alike."
@@ -73,7 +79,7 @@ export const KitSlider = () => {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductsSliderItem
+          <ProductItem
             title="COCKTAIL SMOKER FULL KIT"
             description=" Upgrade your at-home bar with our Cocktail Smoking Kit, a must-have
           for connoisseurs and enthusiasts alike."
@@ -81,7 +87,7 @@ export const KitSlider = () => {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductsSliderItem
+          <ProductItem
             title="COCKTAIL SMOKER FULL KIT"
             description=" Upgrade your at-home bar with our Cocktail Smoking Kit, a must-have
           for connoisseurs and enthusiasts alike."

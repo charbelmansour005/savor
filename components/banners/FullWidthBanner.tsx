@@ -1,5 +1,6 @@
 import Image from "next/image";
 import image2 from "../navbar/image2.jpeg";
+import image3 from "../navbar/image4.jpg";
 import { Anton, Lato, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 const anton = Anton({
@@ -12,12 +13,12 @@ const playfair = Playfair_Display({
   weight: ["400", "700"],
 });
 
-export const FullWidthBanner = () => {
+export const FullWidthBanner = ({ image = image2 }) => {
   return (
     <section className="relative w-full h-188 bg-cover bg-center">
       <div className="absolute -z-10 inset-0">
         <Image
-          src={image2}
+          src={image}
           alt="always add alt"
           fill
           style={{ objectFit: "cover" }}

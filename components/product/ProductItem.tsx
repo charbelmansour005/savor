@@ -12,14 +12,16 @@ const playfair = Playfair_Display({
 });
 const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
 
-export const ProductsSliderItem = ({
+export const ProductItem = ({
   image,
   title,
   description,
+  actionTitle = "Shop now",
 }: {
   image: any;
   title: string;
   description: string;
+  actionTitle?: string;
 }) => {
   return (
     <section className="md:py-20 flex justify-center">
@@ -52,7 +54,18 @@ export const ProductsSliderItem = ({
           <p
             className={`${lato.className} text-sm text-center uppercase tracking-[5] font-normal text-[#faeac8] group-hover:text-[#000000]`}
           >
-            Shop now
+            {actionTitle}
+          </p>
+        </motion.button>
+
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          className="flex md:hidden flex-row justify-center group mt-5 border-1 cursor-pointer py-4 px-27 bg-[#000] hover:bg-[#faeac8] transition duration-150 w-[380px]"
+        >
+          <p
+            className={`${lato.className} text-sm text-center uppercase tracking-[5] font-normal text-[#faeac8] group-hover:text-[#000000]`}
+          >
+            {actionTitle}
           </p>
         </motion.button>
       </div>

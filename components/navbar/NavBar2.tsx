@@ -42,8 +42,8 @@ export default function Navbar2() {
     { name: "Home", url: "/" },
     { name: "Shop", url: "/shop" },
     { name: "Cocktails", url: "/cocktails" },
-    { name: "Smoker Guide", url: "/guide" },
-    { name: "Who We Are", url: "/about" },
+    { name: "Guide", url: "/guide" },
+    // { name: "Who We Are", url: "/about" },
     { name: "Login / Sign Up", url: "/register" },
   ];
 
@@ -74,7 +74,7 @@ export default function Navbar2() {
                 <Image
                   style={{ objectFit: "contain", color: "black" }}
                   src={image}
-                  width={160}
+                  width={180}
                   height={100}
                   alt="Logo"
                   className="select-none object-contain"
@@ -120,12 +120,12 @@ export default function Navbar2() {
                   href={item.url}
                   className={`group select-none transition duration-200 relative ${
                     anton.className
-                  } text-[15px] uppercase tracking-wide font-normal ${
-                    index === 5 && "flex flex-row"
+                  } text-[15px] uppercase tracking-[0.5px] font-normal ${
+                    index === 4 && "flex flex-row"
                   }`}
                 >
                   {item.name}{" "}
-                  {index === 5 ? (
+                  {index === 4 ? (
                     <motion.div
                       transition={{
                         duration: 0.25,
@@ -145,7 +145,7 @@ export default function Navbar2() {
                   )}
                   <span
                     className={`block h-[3px] ${
-                      isActive ? `bg-[#000000]` : `bg-[#ffdc64]`
+                      isActive ? `bg-[#000000]` : `bg-[#976c3b]`
                     } transition-all duration-200 ${
                       isActive ? "max-w-full" : "max-w-0 group-hover:max-w-full"
                     }`}
